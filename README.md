@@ -1,6 +1,8 @@
-# Sample Hardhat Project
+# Bernie Hardhat Project (Smart contract learning)
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+[![CI Tests](https://github.com/bernardosecades/smart-contracts/actions/workflows/test.yml/badge.svg)](https://github.com/bernardosecades/smart-contracts/actions/workflows/test.yml) [![CI Linter](https://github.com/bernardosecades/smart-contracts/actions/workflows/linter.yml/badge.svg)](https://github.com/bernardosecades/smart-contracts/actions/workflows/linter.yml)
+
+To learn smart contracts, test for those contracts, and a script that deploys those contracts.
 
 Try running some of the following tasks:
 
@@ -10,4 +12,10 @@ npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
+```
+
+Makefile
+
+```shell
+make help
 ```

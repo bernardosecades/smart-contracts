@@ -1,0 +1,21 @@
+name: CI Tests
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install packages
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install --save-dev hardhat && npm install --save-dev @nomicfoundation/hardhat-toolbox
+      - name: Run Tests
+        run: make test
+        
