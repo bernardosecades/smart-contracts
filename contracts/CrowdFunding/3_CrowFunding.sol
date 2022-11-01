@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >= 0.7.0 <0.9.0;
 
-// TODO add only owner of contract can change status contract and he can not add funds himself
 contract CrowFunding {
 
     string public id;
@@ -12,6 +11,16 @@ contract CrowFunding {
     uint public funds;
     uint public fundraisingGoal;
 
+    modifier isAuthor() {
+        require(msg.sender == author, "You need to be the project author");
+        _;
+    }
+
+    modifier isNotAuthor() {
+        require(msg.sender != author, "As author you can not fund your own project");
+        _;
+    }
+
     constructor(string memory _id, string memory _name, string memory _description, uint _fundraisingGoal) {
         id = _id;
         name = _name;
@@ -20,12 +29,12 @@ contract CrowFunding {
         author = payable(msg.sender);
     }
 
-    function fundProject() public payable {
+    function fundProject() isNotAuthor public payable {
         author.transfer(msg.value); // wei (1 eth * ^e-18)
         funds += msg.value;
     }
 
-    function changeProjectState(string calldata newState) public {
+    function changeProjectState(string calldata newState) isAuthor public {
         state = newState;
     }
 }
