@@ -6,6 +6,12 @@ all: help
 lint: ; $(info Linting contracts...)
 	solium -d contracts/
 
+#### CLEAN ##
+## clean: Clear the cache and delete the artifacts. Usage: 'make clean'
+.PHONY: clean
+clean: ; $(info Clear cache and delete the artifacts ...)
+	npx hardhat clean		
+
 #### COMPILE ##
 ## compile: Compile contracts. Usage: 'make compile'
 .PHONY: compile

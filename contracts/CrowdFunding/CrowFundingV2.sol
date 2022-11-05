@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >= 0.7.0 <0.9.0;
 
-contract CrowFunding {
+contract CrowFundingV2 {
 
     string public id;
     string public name;
@@ -16,11 +16,6 @@ contract CrowFunding {
         _;
     }
 
-    modifier isNotAuthor() {
-        require(msg.sender != author, "As author you can not fund your own project");
-        _;
-    }
-
     constructor(string memory _id, string memory _name, string memory _description, uint _fundraisingGoal) {
         id = _id;
         name = _name;
@@ -29,12 +24,12 @@ contract CrowFunding {
         author = payable(msg.sender);
     }
 
-    function fundProject() isNotAuthor public payable {
+    function fundProject() public payable {
         author.transfer(msg.value); // wei (1 eth * ^e-18)
         funds += msg.value;
     }
 
-    function changeProjectState(string calldata newState) isAuthor public {
+    function changeProjectState(string calldata newState) public isAuthor {
         state = newState;
     }
 }

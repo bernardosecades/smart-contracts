@@ -19,3 +19,22 @@ Makefile
 ```shell
 make help
 ```
+
+# Deploy
+
+local:
+
+`npx hardhat run scripts/deploy_berni_nft.js`
+
+goerli:
+
+`npx hardhat run scripts/deploy_berni_nft.js --network goerli`
+
+
+# ADN
+
+13 atributos api avataar ver screenshot (26 numeros, cada par definen un atributo).
+
+usaremos uint256, pero solo los ultimos 26 nuneros para saber el adn
+
+https://getavataaars.com/

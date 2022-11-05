@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-      - run: npm install --save-dev hardhat && npm install --save-dev @nomicfoundation/hardhat-toolbox
+      - run: npm install --save-dev hardhat && npm install --save-dev @nomicfoundation/hardhat-toolbox && npm install --save dotenv && npm install @openzeppelin/contracts
       - name: Run Tests
         run: make test
         
