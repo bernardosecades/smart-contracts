@@ -9,6 +9,9 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     environment: staging # we have defined environment variables to execute tests on staging
+    env:
+      INFURA_PROJECT_ID: '${{ secrets.INFURA_PROJECT_ID }}'
+      DEPLOYER_SIGNER_PRIVATE_KEY: '${{ secrets.DEPLOYER_SIGNER_PRIVATE_KEY }}'
 
     steps:
       - uses: actions/checkout@v3
